@@ -30,7 +30,7 @@ namespace MeetingOrganizer.Controllers
 
                 //Http Get = Server çalışıyor mu kontrol et
                 var responceTask = client.GetAsync("/meeting");
-                responceTask.Wait();//gönderdiğim cevap gelene kadar bekle
+                responceTask.Wait();
 
                 var result = responceTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -117,7 +117,7 @@ namespace MeetingOrganizer.Controllers
                 {
                     var readJsonTask = result.Content.ReadAsAsync<Meeting>();
                     readJsonTask.Wait();
-                    meeting = readJsonTask.Result;//Dönen değeri derginin içine atadık.
+                    meeting = readJsonTask.Result;
                 }
                 else
                 {
@@ -133,7 +133,7 @@ namespace MeetingOrganizer.Controllers
         {
             if (id != meeting.id)
             {
-                ModelState.AddModelError(string.Empty, "Talep edilen dergi ile değiştirilen dergi aynı değil. ");
+                ModelState.AddModelError(string.Empty, "Talep edilen Meeting ile değiştirilen Meeting aynı değil. ");
                 //result.ReasonPhrase => hangi hata mesajı geldiğini gösterdik
                 return View(meeting);
             }
@@ -173,7 +173,7 @@ namespace MeetingOrganizer.Controllers
                 {
                     var readJsonTask = result.Content.ReadAsAsync<Meeting>();
                     readJsonTask.Wait();
-                    meeting = readJsonTask.Result;//Dönen değeri derginin içine atadık.
+                    meeting = readJsonTask.Result;
                 }
                 else
                 {
